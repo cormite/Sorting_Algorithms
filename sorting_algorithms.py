@@ -12,6 +12,7 @@ class SortingAlgorithms:
     # Extra Functions
     @staticmethod
     def hashing(items):
+        """ Implementation of hashing used by Bucket Sort """
         import math
         m = items[0]
         for i in range(1, len(items)):
@@ -22,6 +23,7 @@ class SortingAlgorithms:
 
     @staticmethod
     def re_hashing(i, code):
+        """ Implementation of re_hashing used by Bucket Sort """
         return int(i / code[0] * (code[1] - 1))
 
     # Simple Sorts
