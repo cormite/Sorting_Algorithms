@@ -63,7 +63,6 @@ class Sorting_Algorithms:
             items[fillslot] = items[positionOfMax]
             items[positionOfMax] = temp
 
-
     # Efficient Sorts
 
     # [Best/Avg/Worst: O(N lg N)]
@@ -168,7 +167,6 @@ class Sorting_Algorithms:
             # move to next digit
             placement *= RADIX
 
-
     # Extra Functions
 
     def hashing(self, items):
@@ -182,4 +180,3 @@ class Sorting_Algorithms:
 
     def re_hashing(self, i, code):
         return int(i / code[0] * (code[1] - 1))
-
