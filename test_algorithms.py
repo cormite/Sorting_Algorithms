@@ -8,66 +8,66 @@ import sorting_algorithms
 
 class Test (unittest.TestCase):
 
-    sort = sorting_algorithms.Sorting_Algorithms()
+    sort = sorting_algorithms.SortingAlgorithms()
     random_items = [random.randint(1, 1000) for num_items in range(1000)]
 
-    def testBucketsort(self):
+    def test_Bucketsort(self):
         items = self.random_items[:]
         self.sort.bucket_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("bucketsort method fails.")
 
-    def testBubblesort(self):
+    def test_Bubblesort(self):
         items = self.random_items[:]
         self.sort.bubble_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("bubblesort method fails.")
 
-    def testHeapsort(self):
+    def test_Heapsort(self):
         items = self.random_items[:]
         self.sort.heap_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("heap method fails.")
 
-    def testInsertionsort(self):
+    def test_Insertionsort(self):
         items = self.random_items[:]
         self.sort.insertion_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("insertion method fails.")
 
-    def testMergesort(self):
+    def test_Mergesort(self):
         items = self.random_items[:]
         self.sort.merge_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("merge method fails.")
 
-    def testSelectionsort(self):
+    def test_Selectionsort(self):
         items = self.random_items[:]
         self.sort.selection_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("selection method fails.")
 
-    def testShellsort(self):
+    def test_Shellsort(self):
         items = self.random_items[:]
         self.sort.shell_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("shell method fails.")
 
-    def testQuicksort(self):
+    def test_Quicksort(self):
         items = self.random_items[:]
         self.sort.quick_sort(items)
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("quick method fails.")
 
-    def testRadix(self):
+    def test_Radix(self):
         items = self.random_items[:]
         self.sort.radix_sort(items)
         for i in range(1, len(items)):

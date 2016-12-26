@@ -7,17 +7,18 @@ import time
 
 class Main:
 
-    def random_generator(self):
+    @staticmethod
+    def random_generator():
         import random
 
-        elems = 100000
+        elems = 10000
 
         random_items = [random.randint(1, elems) for num_items in range(elems)]
         return random_items
 
 
 main = Main()
-sort = sorting_algorithms.Sorting_Algorithms()
+sort = sorting_algorithms.SortingAlgorithms()
 
 random_items = main.random_generator()
 function_list = [sort.bucket_sort, sort.bubble_sort, sort.insertion_sort,
@@ -31,4 +32,4 @@ for functions in range(0, len(function_list)):
     start_time = time.time()
     function_list[functions](random_items)
     print("--- seconds for " + functions_names[functions] +
-          " :    %s " % (time.time() - start_time))
+          " :    {0} ".format(time.time() - start_time))

@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# References:
+# https://en.wikipedia.org/wiki/Sorting_algorithm
 
-class Sorting_Algorithms:
+class SortingAlgorithms:
 
     # Simple Sorts
 
     # [Best: O(n), Worst:O(N^2)]
     def bubble_sort(self, items):
         """ Implementation of bubble sort """
-        for i in range(len(items)):
+        for i, a in enumerate(items):
             for j in range(len(items) - 1 - i):
                 if items[j] > items[j + 1]:
                     items[j], items[j + 1] = items[j + 1], items[j]  # Swap!
@@ -37,8 +39,8 @@ class Sorting_Algorithms:
 
         ndx = 0
         # merge the buckets: O(n)
-        for b in range(len(buckets)):
-            for v in buckets[b]:
+        for i, b in enumerate(buckets):
+            for v in b:
                 items[ndx] = v
                 ndx += 1
 
