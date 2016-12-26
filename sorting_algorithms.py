@@ -9,7 +9,8 @@ class SortingAlgorithms:
     # Simple Sorts
 
     # [Best: O(n), Worst:O(N^2)]
-    def bubble_sort(self, items):
+    @staticmethod
+    def bubble_sort(items):
         """ Implementation of bubble sort """
         for i, a in enumerate(items):
             for j in range(len(items) - 1 - i):
@@ -45,7 +46,8 @@ class SortingAlgorithms:
                 ndx += 1
 
     # [Best: O(N), Worst:O(N^2)]
-    def insertion_sort(self, items):
+    @staticmethod
+    def insertion_sort(items):
         """ Implementation of insertion sort """
         for i in range(1, len(items)):
             j = i
@@ -54,21 +56,23 @@ class SortingAlgorithms:
                 j -= 1
 
     # [Best/Worst: O(N^2)]
-    def selection_sort(self, items):
+    @staticmethod
+    def selection_sort(items):
         for fillslot in range(len(items) - 1, 0, -1):
-            positionOfMax = 0
+            position_of_max = 0
             for location in range(1, fillslot + 1):
-                if items[location] > items[positionOfMax]:
-                    positionOfMax = location
+                if items[location] > items[position_of_max]:
+                    position_of_max = location
 
             temp = items[fillslot]
-            items[fillslot] = items[positionOfMax]
-            items[positionOfMax] = temp
+            items[fillslot] = items[position_of_max]
+            items[position_of_max] = temp
 
     # Efficient Sorts
 
     # [Best/Avg/Worst: O(N lg N)]
-    def heap_sort(self, items):
+    @staticmethod
+    def heap_sort(items):
         """ Implementation of heap sort """
         import heapq
         heapq.heapify(items)
@@ -106,7 +110,8 @@ class SortingAlgorithms:
                 k = k + 1
         return items
 
-    def shell_sort(self, items):
+    @staticmethod
+    def shell_sort(items):
         "Shell sort using Shell's (original) gap sequence: n/2, n/4, ..., 1."
         gap = len(items) // 2
         # loop over the gaps
@@ -141,13 +146,14 @@ class SortingAlgorithms:
             items[:] = smaller_items + [items[pivot_index]] + larger_items
 
     # [Best/Avg/Worst: O(N)]
-    def radix_sort(self, items):
+    @staticmethod
+    def radix_sort(items):
         RADIX = 10
-        maxLength = False
+        max_length = False
         tmp, placement = -1, 1
 
-        while not maxLength:
-            maxLength = True
+        while not max_length:
+            max_length = True
             # declare and initialize buckets
             buckets = [list() for _ in range(RADIX)]
 
@@ -155,8 +161,8 @@ class SortingAlgorithms:
             for i in items:
                 tmp = i / placement
                 buckets[tmp % RADIX].append(i)
-                if maxLength and tmp > 0:
-                    maxLength = False
+                if max_length and tmp > 0:
+                    max_length = False
 
             # empty lists into aList array
             a = 0
@@ -170,7 +176,6 @@ class SortingAlgorithms:
             placement *= RADIX
 
     # Extra Functions
-
     def hashing(self, items):
         import math
         m = items[0]
