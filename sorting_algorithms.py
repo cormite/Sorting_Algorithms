@@ -4,7 +4,22 @@
 # References:
 # https://en.wikipedia.org/wiki/Sorting_algorithm
 
+
 class SortingAlgorithms:
+
+
+    # Extra Functions
+    def hashing(items):
+        import math
+        m = items[0]
+        for i in range(1, len(items)):
+            if (m < items[i]):
+                m = items[i]
+        result = [m, int(math.sqrt(len(items)))]
+        return result
+
+    def re_hashing(i, code):
+        return int(i / code[0] * (code[1] - 1))
 
     # Simple Sorts
 
@@ -17,6 +32,7 @@ class SortingAlgorithms:
                 if items[j] > items[j + 1]:
                     items[j], items[j + 1] = items[j + 1], items[j]  # Swap!
 
+    @staticmethod
     def bucket_sort(self, items):
         """
         Implementation of Sorting Method Bucket Sort.
@@ -175,15 +191,3 @@ class SortingAlgorithms:
             # move to next digit
             placement *= RADIX
 
-    # Extra Functions
-    def hashing(self, items):
-        import math
-        m = items[0]
-        for i in range(1, len(items)):
-            if (m < items[i]):
-                m = items[i]
-        result = [m, int(math.sqrt(len(items)))]
-        return result
-
-    def re_hashing(self, i, code):
-        return int(i / code[0] * (code[1] - 1))

@@ -28,8 +28,9 @@ functions_names = ["Bucket Sort", "Bubble Sort", "Insertion Sort",
                    "Merge Sort", "Shell Sort", "Quick Sort",
                    "Radix Sort", "Heap Sort"]
 
-for functions in range(0, len(function_list)):
+for index, value in enumerate(function_list):
     start_time = time.time()
-    function_list[functions](random_items)
-    print("--- seconds for " + functions_names[functions] +
+    function_list[index](random_items)
+    print("--- seconds for " + functions_names[index] +
           " :    {0} ".format(time.time() - start_time))
+
