@@ -9,7 +9,8 @@ class SortingAlgorithms:
 
 
     # Extra Functions
-    def hashing(self, items):
+    @staticmethod
+    def hashing(items):
         import math
         m = items[0]
         for i in range(1, len(items)):
@@ -18,7 +19,8 @@ class SortingAlgorithms:
         result = [m, int(math.sqrt(len(items)))]
         return result
 
-    def re_hashing(self, i, code):
+    @staticmethod
+    def re_hashing(i, code):
         return int(i / code[0] * (code[1] - 1))
 
     # Simple Sorts
