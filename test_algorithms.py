@@ -7,6 +7,7 @@ import sorting_algorithms
 
 
 class Test (unittest.TestCase):
+    """ Tests for Sorting Algorithms """
 
     sort = sorting_algorithms.SortingAlgorithms()
     random_items = [random.randint(1, 1000) for num_items in range(1000)]

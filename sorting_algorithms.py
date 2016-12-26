@@ -6,6 +6,7 @@
 
 
 class SortingAlgorithms:
+    """ Implementation of Sorting Algorithms """
 
 
     # Extra Functions
@@ -14,7 +15,7 @@ class SortingAlgorithms:
         import math
         m = items[0]
         for i in range(1, len(items)):
-            if (m < items[i]):
+            if m < items[i]:
                 m = items[i]
         result = [m, int(math.sqrt(len(items)))]
         return result
@@ -28,7 +29,7 @@ class SortingAlgorithms:
     # [Best: O(n), Worst:O(N^2)]
     @staticmethod
     def bubble_sort(items):
-        """ Implementation of bubble sort """
+        """ Implementation of Bubble Sort """
         for i, a in enumerate(items):
             for j in range(len(items) - 1 - i):
                 if items[j] > items[j + 1]:
@@ -36,7 +37,7 @@ class SortingAlgorithms:
 
     def bucket_sort(self, items):
         """
-        Implementation of Sorting Method Bucket Sort.
+        Implementation of Bucket Sort.
 
         :type       items: list
         :param      items: list to be ordered
@@ -65,7 +66,7 @@ class SortingAlgorithms:
     # [Best: O(N), Worst:O(N^2)]
     @staticmethod
     def insertion_sort(items):
-        """ Implementation of insertion sort """
+        """ Implementation of Insertion Sort """
         for i in range(1, len(items)):
             j = i
             while j > 0 and items[j] < items[j - 1]:
@@ -75,6 +76,7 @@ class SortingAlgorithms:
     # [Best/Worst: O(N^2)]
     @staticmethod
     def selection_sort(items):
+        """ Implementations of Selection Sort """
         for fillslot in range(len(items) - 1, 0, -1):
             position_of_max = 0
             for location in range(1, fillslot + 1):
@@ -90,12 +92,13 @@ class SortingAlgorithms:
     # [Best/Avg/Worst: O(N lg N)]
     @staticmethod
     def heap_sort(items):
-        """ Implementation of heap sort """
+        """ Implementation of Heap Sort """
         import heapq
         heapq.heapify(items)
         items[:] = [heapq.heappop(items) for i in range(len(items))]
 
     def merge_sort(self, items):
+        """ Implementation of Merge Sort """
         if len(items) > 1:
             mid = len(items) // 2
             lefthalf = items[:mid]
@@ -129,7 +132,8 @@ class SortingAlgorithms:
 
     @staticmethod
     def shell_sort(items):
-        "Shell sort using Shell's (original) gap sequence: n/2, n/4, ..., 1."
+        """ Implementation of Shell Sort
+        using Shell's (original) gap sequence: n/2, n/4, ..., 1. """
         gap = len(items) // 2
         # loop over the gaps
         while gap > 0:
@@ -145,7 +149,7 @@ class SortingAlgorithms:
 
     # [Best: O(N lg N), Avg: O(N lg N), Worst:O(N^2)]
     def quick_sort(self, items):
-        """ Implementation of quick sort """
+        """ Implementation of Quick Sort """
         if len(items) > 1:
             pivot_index = len(items) // 2
             smaller_items = []
@@ -165,6 +169,7 @@ class SortingAlgorithms:
     # [Best/Avg/Worst: O(N)]
     @staticmethod
     def radix_sort(items):
+        """ Implementation of Radix Sort """
         RADIX = 10
         max_length = False
         tmp, placement = -1, 1
