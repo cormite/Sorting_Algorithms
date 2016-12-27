@@ -13,28 +13,45 @@ class Main:
     """
 
     @staticmethod
-    def random_generator(ELEMS):
-        '''Generates an array initialized with randomized values'''
+    def random_generator(items):
+        """Generates an array initialized with randomized values"""
         import random
-        return [random.randint(1, ELEMS) for num_items in range(ELEMS)]
+        return [random.randint(1, items) for num_items in range(items)]
 
-ELEMS = 10000
+array_size = 10000
 
 main = Main()
 sort = sorting_algorithms.SortingAlgorithms()
 
-random_items = main.random_generator(ELEMS)
+random_items = main.random_generator(array_size)
 
-function_list = [sort.bucket_sort, sort.bubble_sort, sort.insertion_sort,
-                 sort.merge_sort, sort.shell_sort, sort.quick_sort,
-                 sort.radix_sort, sort.heap_sort]
-functions_names = ["Bucket Sort", "Bubble Sort", "Insertion Sort",
-                   "Merge Sort", "Shell Sort", "Quick Sort",
-                   "Radix Sort", "Heap Sort"]
+
+function_list = [sort.bucket_sort,
+                 sort.bubble_sort,
+                 sort.insertion_sort,
+                 sort.merge_sort,
+                 sort.shell_sort,
+                 sort.quick_sort,
+                 sort.radix_sort,
+                 sort.heap_sort]
+
+functions_names = ["Bucket Sort",
+                   "Bubble Sort",
+                   "Insertion Sort",
+                   "Merge Sort",
+                   "Shell Sort",
+                   "Quick Sort",
+                   "Radix Sort",
+                   "Heap Sort"]
 
 for index, value in enumerate(function_list):
+    # A new list has to be used otherwise after the first execution of the for
+    # loop the list is already sorted.
+    unsorted = random_items[:]
     start_time = time.time()
-    function_list[index](random_items)
-    print("--- seconds for " + functions_names[index] +
-          " :    {0} ".format(time.time() - start_time))
+    function_list[index](unsorted)
+    print("--- seconds for " + functions_names[index].rjust(14)
+          + " : "
+          + "{0}".format(time.time() - start_time))
+
 

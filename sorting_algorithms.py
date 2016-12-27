@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# References:
-# https://en.wikipedia.org/wiki/Sorting_algorithm
-
 
 class SortingAlgorithms:
-    """ Implementation of Sorting Algorithms """
+    """ Implementation of Sorting Algorithms
 
+    This class provides different sorting algorithms. The purpose of this
+    project is to learn and measure the efficiency of each one of the
+    algorithms when sorting an array of x items randomly initialized.
+
+    **References**:
+    *https://en.wikipedia.org/wiki/Sorting_algorithm*
+
+    """
 
     # Extra Functions
     @staticmethod
@@ -198,4 +203,3 @@ class SortingAlgorithms:
 
             # move to next digit
             placement *= RADIX
-
