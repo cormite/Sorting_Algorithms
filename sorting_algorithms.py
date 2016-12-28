@@ -20,7 +20,7 @@ class SortingAlgorithms:
     @staticmethod
     def bubble_sort(items):
         """ Implementation of Bubble Sort """
-        for i, a in enumerate(items):
+        for i, _ in enumerate(items):
             for j in range(len(items) - 1 - i):
                 if items[j] > items[j + 1]:
                     items[j], items[j + 1] = items[j + 1], items[j]  # Swap!
@@ -156,7 +156,7 @@ class SortingAlgorithms:
         """ Implementation of Heap Sort """
         import heapq
         heapq.heapify(items)
-        items[:] = [heapq.heappop(items) for i in range(len(items))]
+        items[:] = [heapq.heappop(items) for _ in range(len(items))]
 
     def merge_sort(self, items):
         """ Implementation of Merge Sort """

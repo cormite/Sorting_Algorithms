@@ -3,6 +3,8 @@
 
 <A href="https://www.quantifiedcode.com/app/project/f78a63e3c9e74e13ae2449eb7ace379c"><img src="https://www.quantifiedcode.com/api/v1/project/f78a63e3c9e74e13ae2449eb7ace379c/badge.svg" alt="Code issues"/></A>
 
+<a href="https://landscape.io/github/cormite/Sorting_Algorithms/master/badges"><img src="https://landscape.io//github/cormite/Sorting_Algorithms/master/landscape.svg?style=flat" alt="Code Health"></a>
+
 <h2>Sorting Algorithms</h2>
 
 <h3>Introduction</h3>

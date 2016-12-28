@@ -21,7 +21,7 @@ class Main:
         :return: Array initialized with random values from 1 to items
         """
         import random
-        return [random.randint(1, items) for num_items in range(items)]
+        return [random.randint(1, items) for _ in range(items)]
 
 array_size = 10000
 
