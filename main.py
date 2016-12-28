@@ -23,7 +23,7 @@ class Main:
         import random
         return [random.randint(1, items) for num_items in range(items)]
 
-array_size = 1000
+array_size = 10000
 
 main = Main()
 sort = sorting_algorithms.SortingAlgorithms()

@@ -57,16 +57,24 @@ class SortingAlgorithms:
 
     @staticmethod
     def counting_sort(aList, k):
+        """
+        Implementation of Bucket Sort
+        Reference: http://www.geekviewpoint.com/python/sorting/countingsort
+        :param aList: Input array
+        :param k: values range from 0 to len(aList)
+        :return: Array elements sorted in incremental order.
+        """
         counter = [0] * (k + 1)
         for i in aList:
             counter[i] += 1
 
         ndx = 0;
-        for i in range(len(counter)):
-            while 0 < counter[i]:
+        # for i in range(len(counter)):
+        for i, j in enumerate(counter):
+            while 0 < j:
                 aList[ndx] = i
                 ndx += 1
-                counter[i] -= 1
+                j -= 1
 
     def cycle_sort(self, aList):
         writes = 0
