@@ -9,8 +9,10 @@ import sorting_algorithms
 class Test (unittest.TestCase):
     """ Tests for Sorting Algorithms """
 
+    array_size = 1000
+
     sort = sorting_algorithms.SortingAlgorithms()
-    random_items = [random.randint(1, 1000) for num_items in range(1000)]
+    random_items = [random.randint(1, array_size) for num_items in range(array_size)]
 
     def test_bucket_sort(self):
         items = self.random_items[:]
@@ -25,6 +27,20 @@ class Test (unittest.TestCase):
         for i in range(1, len(items)):
             if items[i - 1] > items[i]:
                 self.fail("bubblesort method fails.")
+
+    def test_counting_sort(self):
+        items = self.random_items[:]
+        self.sort.counting_sort(items, len(items))
+        for i in range(1, len(items)):
+            if items[i - 1] > items[i]:
+                self.fail("countingsort method fails.")
+
+    def test_cycle_sort(self):
+        items = self.random_items[:]
+        self.sort.cycle_sort(items)
+        for i in range(1, len(items)):
+            if items[i - 1] > items[i]:
+                self.fail("cyclesort method fails.")
 
     def test_heap_sort(self):
         items = self.random_items[:]

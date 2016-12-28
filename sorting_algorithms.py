@@ -14,23 +14,6 @@ class SortingAlgorithms:
 
     """
 
-    # Extra Functions
-    @staticmethod
-    def hashing(items):
-        """ Implementation of hashing used by Bucket Sort """
-        import math
-        m = items[0]
-        for i in range(1, len(items)):
-            if m < items[i]:
-                m = items[i]
-        result = [m, int(math.sqrt(len(items)))]
-        return result
-
-    @staticmethod
-    def re_hashing(i, code):
-        """ Implementation of re_hashing used by Bucket Sort """
-        return int(i / code[0] * (code[1] - 1))
-
     # Simple Sorts
 
     # [Best: O(n), Worst:O(N^2)]
@@ -45,6 +28,7 @@ class SortingAlgorithms:
     def bucket_sort(self, items):
         """
         Implementation of Bucket Sort.
+        Reference: http://www.geekviewpoint.com/python/sorting/bucketsort
 
         :type       items: list
         :param      items: list to be ordered
@@ -65,14 +49,76 @@ class SortingAlgorithms:
 
         ndx = 0
         # merge the buckets: O(n)
-        for i, b in enumerate(buckets):
+        #for i, b in enumerate(buckets):
+        for _, b in enumerate(buckets):
             for v in b:
                 items[ndx] = v
                 ndx += 1
 
-    # [Best: O(N), Worst:O(N^2)]
+    @staticmethod
+    def counting_sort(aList, k):
+        counter = [0] * (k + 1)
+        for i in aList:
+            counter[i] += 1
+
+        ndx = 0;
+        for i in range(len(counter)):
+            while 0 < counter[i]:
+                aList[ndx] = i
+                ndx += 1
+                counter[i] -= 1
+
+    def cycle_sort(self, aList):
+        writes = 0
+
+        for cs in range(len(aList) - 1):
+            # assume the element at aList[cs] is out of place
+            seeker = aList[cs]
+            pos = cs
+            # find the correct position (pos) of seeker
+            for i in range(cs + 1, len(aList)):
+                if aList[i] < seeker:
+                    pos += 1
+
+            # if seeker is already in correct position, move on
+            if pos == cs:
+                continue
+
+            # move index pos after duplicates if any
+            while seeker == aList[pos]:
+                pos += 1
+
+            # Make a switch: seeker gets index pos, its rightful
+            # home; whatever element was at pos is now the seeker
+            # in search of a rightful home.
+
+            seeker = self.set_value(aList, seeker, pos)
+            # track the number of writes
+            writes += 1
+
+            #  complete the current cycle before moving to the next
+            #  cycle. At the end of the current cycle, pos will
+            #  equal cs; which should make sense since a cycle
+            #  always ends where it began.
+
+            while pos != cs:
+                # same as block of code above
+                pos = cs
+                for i in range(cs + 1, len(aList)):
+                    if aList[i] < seeker:
+                        pos += 1
+
+                while seeker == aList[pos]:
+                    pos += 1
+
+                seeker = self.set_value(aList, seeker, pos)
+                writes += 1
+
+        return writes
+
     @staticmethod
     def insertion_sort(items):
+        # [Best: O(N), Worst:O(N^2)]
         """ Implementation of Insertion Sort """
         for i in range(1, len(items)):
             j = i
@@ -80,9 +126,9 @@ class SortingAlgorithms:
                 items[j], items[j - 1] = items[j - 1], items[j]
                 j -= 1
 
-    # [Best/Worst: O(N^2)]
     @staticmethod
     def selection_sort(items):
+        # [Best/Worst: O(N^2)]
         """ Implementations of Selection Sort """
         for fillslot in range(len(items) - 1, 0, -1):
             position_of_max = 0
@@ -96,9 +142,9 @@ class SortingAlgorithms:
 
     # Efficient Sorts
 
-    # [Best/Avg/Worst: O(N lg N)]
     @staticmethod
     def heap_sort(items):
+        # [Best/Avg/Worst: O(N lg N)]
         """ Implementation of Heap Sort """
         import heapq
         heapq.heapify(items)
@@ -154,8 +200,8 @@ class SortingAlgorithms:
                 items[j] = val
             gap //= 2
 
-    # [Best: O(N lg N), Avg: O(N lg N), Worst:O(N^2)]
     def quick_sort(self, items):
+        # [Best: O(N lg N), Avg: O(N lg N), Worst:O(N^2)]
         """ Implementation of Quick Sort """
         if len(items) > 1:
             pivot_index = len(items) // 2
@@ -173,9 +219,9 @@ class SortingAlgorithms:
             self.quick_sort(larger_items)
             items[:] = smaller_items + [items[pivot_index]] + larger_items
 
-    # [Best/Avg/Worst: O(N)]
     @staticmethod
     def radix_sort(items):
+        # [Best/Avg/Worst: O(N)]
         """ Implementation of Radix Sort """
         RADIX = 10
         max_length = False
@@ -203,3 +249,28 @@ class SortingAlgorithms:
 
             # move to next digit
             placement *= RADIX
+
+    @staticmethod
+    def set_value(aList, data, ndx):
+        try:
+            return aList[ndx]
+        finally:
+            aList[ndx] = data
+
+    # Extra Functions
+    @staticmethod
+    def hashing(items):
+        """ Implementation of hashing used by Bucket Sort """
+        import math
+        m = items[0]
+        for i in range(1, len(items)):
+            if m < items[i]:
+                m = items[i]
+        result = [m, int(math.sqrt(len(items)))]
+        return result
+
+    @staticmethod
+    def re_hashing(i, code):
+        """ Implementation of re_hashing used by Bucket Sort """
+        return int(i / code[0] * (code[1] - 1))
+
